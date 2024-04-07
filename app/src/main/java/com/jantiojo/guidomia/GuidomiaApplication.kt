@@ -6,7 +6,7 @@ import com.jantiojo.guidomia.di.AppDataContainer
 
 class GuidomiaApplication : Application() {
 
-    private lateinit var appContainer: AppContainer
+    lateinit var appContainer: AppContainer
     override fun onCreate() {
         super.onCreate()
         appContainer = AppDataContainer(this)

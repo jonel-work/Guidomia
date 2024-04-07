@@ -12,3 +12,5 @@ fun Car.toCarUiModel() = CarItemUiModel(
     pros = this.prosList,
     rating = this.rating,
 )
+
+fun List<Car>.toCarUiModelList() = map { it.toCarUiModel() }
