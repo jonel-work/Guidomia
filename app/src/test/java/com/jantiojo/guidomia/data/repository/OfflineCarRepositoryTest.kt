@@ -30,4 +30,24 @@ class OfflineCarRepositoryTest {
         verify { carLocalDataSource.getCars() }
         assertEquals(carList, FakeCarDataSource.carList)
     }
+
+    @Test
+    fun offlineCarRepositoryTest_getCarMakeFilterList_verifyCarMakeList() {
+        val dropdownList = FakeCarDataSource.carList.map { it.make }
+        every { carLocalDataSource.getCarMakeFilterList() } returns dropdownList
+        val carMakeFilterList = offlineCarRepository.getCarMakeFilterList()
+
+        verify { carLocalDataSource.getCarMakeFilterList() }
+        assertEquals(carMakeFilterList, dropdownList)
+    }
+
+    @Test
+    fun offlineCarRepositoryTest_getCarModelFilterList_verifyCarModelList() {
+        val dropdownList = FakeCarDataSource.carList.map { it.model }
+        every { carLocalDataSource.getCarModelFilterList() } returns dropdownList
+        val carModelFilterList = offlineCarRepository.getCarModelFilterList()
+
+        verify { carLocalDataSource.getCarModelFilterList() }
+        assertEquals(carModelFilterList, dropdownList)
+    }
 }

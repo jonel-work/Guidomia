@@ -7,4 +7,14 @@ class OfflineCarRepository(private val localDataSource: CarLocalDataSource) : Ca
     override fun getCars(): List<Car> {
         return localDataSource.getCars()
     }
+
+    override fun getCarMakeFilterList(): List<String> {
+        return localDataSource.getCarMakeFilterList()
+    }
+
+    override fun getCarModelFilterList(): List<String> {
+        return localDataSource.getCarModelFilterList()
+    }
+
+
 }
