@@ -21,11 +21,11 @@ import com.jantiojo.guidomia.ui.theme.GuidomiaTheme
 import com.jantiojo.guidomia.ui.theme.Sizes
 
 @Composable
-fun SearchFilterSection(
-    anyMakeValue: String,
-    onAnyMakeValueChange: (String) -> Unit,
-    anyModelValue: String,
-    onAnyModelValueChange: (String) -> Unit,
+fun DropdownFilterSection(
+    makeDropdownMenu: List<String>,
+    modelDropdownMenu: List<String>,
+    onMakeDropdownChange: (String) -> Unit,
+    onModelDropdownChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -49,16 +49,16 @@ fun SearchFilterSection(
                 )
             )
 
-            SearchField(
-                textValue = anyMakeValue,
-                onValueChange = onAnyMakeValueChange,
-                textHint = stringResource(id = R.string.any_make_hint)
+            DropDownMenuFilter(
+                dropdownItems = makeDropdownMenu,
+                defaultItem = makeDropdownMenu.first(),
+                onDropdownMenuChange = onMakeDropdownChange
             )
 
-            SearchField(
-                textValue = anyModelValue,
-                onValueChange = onAnyModelValueChange,
-                textHint = stringResource(id = R.string.any_model_hint)
+            DropDownMenuFilter(
+                dropdownItems = modelDropdownMenu,
+                defaultItem = modelDropdownMenu.first(),
+                onDropdownMenuChange = onModelDropdownChange
             )
         }
     }
@@ -68,11 +68,11 @@ fun SearchFilterSection(
 @Composable
 private fun SearchFilterSectionPreview() {
     GuidomiaTheme {
-        SearchFilterSection(
-            anyMakeValue = "",
-            onAnyMakeValueChange = {},
-            anyModelValue = "",
-            onAnyModelValueChange = {}
+        DropdownFilterSection(
+            makeDropdownMenu = listOf("Menu1", "Menu2"),
+            modelDropdownMenu = listOf("Menu3", "Menu4"),
+            onMakeDropdownChange = {},
+            onModelDropdownChange = {}
         )
     }
 }

@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.jantiojo.guidomia.ui.car.TopCarImageSection
 import com.jantiojo.guidomia.ui.car.carListSection
-import com.jantiojo.guidomia.ui.filter.SearchFilterSection
+import com.jantiojo.guidomia.ui.filter.DropdownFilterSection
 import com.jantiojo.guidomia.ui.model.CarItemUiModel
 import com.jantiojo.guidomia.ui.theme.Sizes
 
@@ -21,9 +21,16 @@ fun HomeScreen(
     viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel(factory = MainScreenViewModel.factory)
 ) {
 
-    val uiState by viewModel.carListUi.collectAsState()
+    val carUiState by viewModel.carListUiState.collectAsState()
+    val makeMenuUiState by viewModel.makeDropDownUiState.collectAsState()
+    val modelMenuUiState by viewModel.modelDropDownUiState.collectAsState()
+
     MainScreenBody(
-        carUIList = uiState,
+        carUIList = carUiState,
+        makeDropdownMenu = makeMenuUiState,
+        modelDropdownMenu = modelMenuUiState,
+        onMakeDropdownMenuChange = {},
+        onModelDropdownMenuChange = {},
         modifier = modifier
     )
 
@@ -33,6 +40,10 @@ fun HomeScreen(
 @Composable
 private fun MainScreenBody(
     carUIList: List<CarItemUiModel>,
+    makeDropdownMenu : List<String>,
+    modelDropdownMenu : List<String>,
+    onMakeDropdownMenuChange: (String) -> Unit,
+    onModelDropdownMenuChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var expandedPosition by rememberSaveable { mutableIntStateOf(0) }
@@ -43,11 +54,11 @@ private fun MainScreenBody(
         }
 
         item {
-            SearchFilterSection(
-                anyMakeValue = "",
-                onAnyMakeValueChange = {},
-                anyModelValue = "",
-                onAnyModelValueChange = {},
+            DropdownFilterSection(
+                makeDropdownMenu = makeDropdownMenu,
+                modelDropdownMenu = modelDropdownMenu,
+                onMakeDropdownChange = onMakeDropdownMenuChange,
+                onModelDropdownChange = onModelDropdownMenuChange,
                 modifier = Modifier.padding(Sizes.ExtraLarge)
             )
         }

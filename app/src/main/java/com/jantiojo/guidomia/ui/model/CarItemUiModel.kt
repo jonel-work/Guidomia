@@ -7,4 +7,10 @@ data class CarItemUiModel(
     val rating: Int,
     val cons: List<String>,
     val pros: List<String>
-)
+) {
+
+    fun doesMatchSearchQuery(query: String): Boolean {
+        return name.contains(query, ignoreCase = true)
+    }
+
+}
