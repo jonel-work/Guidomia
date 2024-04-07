@@ -10,6 +10,6 @@ enum class CarImageResource(@DrawableRes val imageRes: Int) {
     ALPINE(R.drawable.alpine_roadster),
     BMW(R.drawable.bmw_330i),
     MERCEDEZ_BENZ(R.drawable.mercedez_benz_glc),
-    RANG_ROVER(R.drawable.range_rover),
+    RANGE_ROVER(R.drawable.range_rover),
     TACOMA(R.drawable.tacoma),
 }
