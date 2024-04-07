@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.jetbrainsKotlinSerialization)
+    alias(libs.plugins.devToolsKsp)
 }
 
 android {
@@ -64,6 +65,11 @@ dependencies {
     implementation(libs.bundles.androidXLifeCycle)
     //Json Serialization
     implementation(libs.kotlinx.serialization.json)
+    //ROOM
+    implementation(libs.bundles.roomDB)
+    ksp(libs.room.compiler)
+    //Coroutine
+    implementation(libs.bundles.coroutine)
 
     testImplementation(libs.junit)
     testImplementation(libs.bundles.mockkTest)

@@ -5,6 +5,15 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="guidomiaDao_getCars_returnAllCarsFromDB()">
+        <State />
+      </entry>
+      <entry key="guidomiaDao_insertCars_insertSuccess()">
+        <State />
+      </entry>
+      <entry key="guidomiaDao_isEmpty_returnFalse()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

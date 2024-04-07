@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.0"
 kotlin = "1.9.0"
+ksp = "1.9.0-1.0.13"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -10,7 +11,8 @@ activityCompose = "1.8.2"
 composeBom = "2023.08.00"
 kotlinSerializationJson = "1.6.0"
 mockkVersion = "1.13.10"
-lifecycleVersion="2.7.0"
+roomVersion = "2.5.1"
+coroutineVersion = "1.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,13 +35,22 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkVersion" }
 mockk-agent = { module = "io.mockk:mockk-agent", version.ref = "mockkVersion" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+coroutine-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
+coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutineVersion" }
+coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutineVersion" }
 
 [bundles]
-mockkTest = ["mockk-agent","mockk-android"]
-androidXLifeCycle = ["androidx-lifecycle-runtime-ktx","androidx-lifecycle-viewmodel-ktx","androidx-lifecycle-viewmodel-compose"]
+mockkTest = ["mockk-agent", "mockk-android"]
+androidXLifeCycle = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx", "androidx-lifecycle-viewmodel-compose"]
+roomDB = ["room-ktx", "room-runtime"]
+coroutine = ["coroutine-core","coroutine-android"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrainsKotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+devToolsKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
