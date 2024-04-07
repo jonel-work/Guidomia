@@ -1,7 +1,6 @@
 package com.jantiojo.guidomia.data.local
 
 import android.content.Context
-import android.util.Log
 import com.jantiojo.guidomia.R
 import com.jantiojo.guidomia.data.model.Car
 import com.jantiojo.guidomia.utils.json.JsonFileUtils
@@ -17,11 +16,9 @@ class CarLocalDataSource(
     suspend fun getCars(): Flow<List<Car>> {
         val carsFromAsset = fetchCarFromAssets()
         return if (!guidomiaDao.isEmpty()) {
-            Log.e("tesst","DB is NOT EMPTY")
             guidomiaDao.getCars()
         } else {
             guidomiaDao.insertAllCar(carsFromAsset)
-            Log.e("tesst","GET CAR FROM carsFromAsset")
             flowOf(carsFromAsset)
         }
     }
