@@ -3,7 +3,7 @@ A simple app loading a list of cars from JSON file and save car list to ROOM Dat
 
 ## App Demo
 
-![](Guidomia/demo/ProjectDemo.gif)
+![](https://github.com/jonel-work/Guidomia/blob/master/demo/ProjectDemo.gif)
 
 ## Requirements
 -   Android Studio Iguana | 2023.2.1 +
