@@ -5,11 +5,11 @@ import com.jantiojo.guidomia.ui.model.CarItemUiModel
 import com.jantiojo.guidomia.utils.CarUtils
 
 fun Car.toCarUiModel() = CarItemUiModel(
-    cons = this.consList,
+    cons = this.consList.filterNot { it.isBlank() },
     name = "${this.make} ${this.model}",
     image = CarUtils.getCarMakeImageResource(this.make),
-    priceDisplay = "120k",//TODO create utils or extension for customerPrice display
-    pros = this.prosList,
+    priceDisplay = CarUtils.priceCompactShortFormat(this.customerPrice),
+    pros = this.prosList.filterNot { it.isBlank() },
     rating = this.rating,
 )
 

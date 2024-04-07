@@ -146,58 +146,62 @@ private fun CarExpandedUI(
     Column(
         modifier = modifier, verticalArrangement = Arrangement.spacedBy(Sizes.Small)
     ) {
-        Text(buildAnnotatedString {
-            withStyle(style = SpanStyle(color = Black45, fontWeight = FontWeight.Bold)) {
-                append(stringResource(id = R.string.pros_label))
-            }
+        if (pros.isNotEmpty()){
+            Text(buildAnnotatedString {
+                withStyle(style = SpanStyle(color = Black45, fontWeight = FontWeight.Bold)) {
+                    append(stringResource(id = R.string.pros_label))
+                }
 
-            pros.forEach {
-                withStyle(style = paragraphStyle) {
-                    withStyle(
-                        style = SpanStyle(
-                            color = Orange, fontWeight = FontWeight.Bold, fontSize = 18.sp
-                        )
-                    ) {
-                        append("\t\t" + bullet)
-                    }
-                    append("\t\t")
-                    withStyle(
-                        style = SpanStyle(
-                            color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 14.sp
-                        )
-                    ) {
-                        append(it)
+                pros.forEach {
+                    withStyle(style = paragraphStyle) {
+                        withStyle(
+                            style = SpanStyle(
+                                color = Orange, fontWeight = FontWeight.Bold, fontSize = 18.sp
+                            )
+                        ) {
+                            append("\t\t" + bullet)
+                        }
+                        append("\t\t")
+                        withStyle(
+                            style = SpanStyle(
+                                color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 14.sp
+                            )
+                        ) {
+                            append(it)
+                        }
                     }
                 }
-            }
 
-        })
+            })
+        }
 
-        Text(text = buildAnnotatedString {
+       if (cons.isNotEmpty()){
+           Text(text = buildAnnotatedString {
 
-            withStyle(style = SpanStyle(color = Black45, fontWeight = FontWeight.Bold)) {
-                append(stringResource(id = R.string.cons_label))
-            }
-            cons.forEach {
-                withStyle(style = paragraphStyle) {
-                    withStyle(
-                        style = SpanStyle(
-                            color = Orange, fontWeight = FontWeight.Bold, fontSize = 18.sp
-                        )
-                    ) {
-                        append("\t\t" + bullet)
-                    }
-                    append("\t\t")
-                    withStyle(
-                        style = SpanStyle(
-                            color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 14.sp
-                        )
-                    ) {
-                        append(it)
-                    }
-                }
-            }
-        })
+               withStyle(style = SpanStyle(color = Black45, fontWeight = FontWeight.Bold)) {
+                   append(stringResource(id = R.string.cons_label))
+               }
+               cons.forEach {
+                   withStyle(style = paragraphStyle) {
+                       withStyle(
+                           style = SpanStyle(
+                               color = Orange, fontWeight = FontWeight.Bold, fontSize = 18.sp
+                           )
+                       ) {
+                           append("\t\t" + bullet)
+                       }
+                       append("\t\t")
+                       withStyle(
+                           style = SpanStyle(
+                               color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 14.sp
+                           )
+                       ) {
+                           append(it)
+                       }
+                   }
+               }
+           })
+       }
     }
 }
 
