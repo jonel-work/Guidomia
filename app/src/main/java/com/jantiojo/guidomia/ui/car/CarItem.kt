@@ -36,8 +36,8 @@ import androidx.compose.ui.unit.sp
 import com.jantiojo.guidomia.R
 import com.jantiojo.guidomia.ui.model.CarItemUiModel
 import com.jantiojo.guidomia.ui.theme.Black45
-import com.jantiojo.guidomia.ui.theme.DarkGray
 import com.jantiojo.guidomia.ui.theme.GuidomiaTheme
+import com.jantiojo.guidomia.ui.theme.LightGray
 import com.jantiojo.guidomia.ui.theme.Orange
 import com.jantiojo.guidomia.ui.theme.Sizes
 
@@ -52,7 +52,7 @@ fun CarItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = DarkGray)
+                .background(color = LightGray)
                 .padding(Sizes.Medium)
         ) {
 
