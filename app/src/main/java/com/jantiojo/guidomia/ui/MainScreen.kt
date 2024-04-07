@@ -5,6 +5,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.jantiojo.guidomia.ui.car.TopCarImageSection
 import com.jantiojo.guidomia.ui.car.carListSection
@@ -32,6 +35,8 @@ private fun MainScreenBody(
     carUIList: List<CarItemUiModel>,
     modifier: Modifier = Modifier
 ) {
+    var expandedPosition by rememberSaveable { mutableIntStateOf(0) }
+
     LazyColumn(modifier = modifier) {
         item {
             TopCarImageSection()
@@ -46,6 +51,12 @@ private fun MainScreenBody(
                 modifier = Modifier.padding(Sizes.ExtraLarge)
             )
         }
-        this.carListSection(carListUi = carUIList)
+        this.carListSection(
+            carListUi = carUIList,
+            expandedPosition = expandedPosition,
+            onClickItem = { index ->
+                expandedPosition = index
+            }
+        )
     }
 }

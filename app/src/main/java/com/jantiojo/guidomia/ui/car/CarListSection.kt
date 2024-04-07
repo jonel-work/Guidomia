@@ -2,7 +2,7 @@ package com.jantiojo.guidomia.ui.car
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -11,10 +11,17 @@ import com.jantiojo.guidomia.ui.theme.GuidomiaTheme
 
 fun LazyListScope.carListSection(
     carListUi: List<CarItemUiModel>,
+    expandedPosition: Int,
+    onClickItem: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    items(items = carListUi) { uiModel ->
-        CarItem(carItemUiModel = uiModel, modifier = modifier)
+    itemsIndexed(items = carListUi) { index, uiModel ->
+        CarItem(
+            carItemUiModel = uiModel,
+            isExpanded = expandedPosition == index,
+            onClickItem = { onClickItem(index) },
+            modifier = modifier
+        )
     }
 }
 
@@ -23,7 +30,11 @@ fun LazyListScope.carListSection(
 private fun CarListSectionPreview() {
     GuidomiaTheme {
         LazyColumn {
-            this.carListSection(carListUi = CarItemPreviewProvider().values.toList())
+            this.carListSection(
+                carListUi = CarItemPreviewProvider().values.toList(),
+                expandedPosition = 0,
+                onClickItem = {}
+            )
         }
     }
 }
