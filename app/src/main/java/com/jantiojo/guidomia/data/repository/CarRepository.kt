@@ -1,16 +1,17 @@
 package com.jantiojo.guidomia.data.repository
 
 import com.jantiojo.guidomia.data.model.Car
+import kotlinx.coroutines.flow.Flow
 
 interface CarRepository {
 
     /**
      *  Fetches Car from Assets
      */
-    fun getCars(): List<Car>
+    suspend fun getCars(): Flow<List<Car>>
 
 
-    fun getCarMakeFilterList(): List<String>
+    suspend fun getCarMakeFilterList(): Flow<List<String>>
 
-    fun getCarModelFilterList(): List<String>
+    suspend fun getCarModelFilterList(): Flow<List<String>>
 }

@@ -13,7 +13,7 @@ object JsonFileUtils {
 
     inline fun <reified T> fromJsonFile(jsonFile: String): Result<T> {
         return runCatching {
-            Json.decodeFromString(jsonFile)
+            Json{ ignoreUnknownKeys = true }.decodeFromString(jsonFile)
         }
     }
 }

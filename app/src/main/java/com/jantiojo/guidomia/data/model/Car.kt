@@ -7,8 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Entity("car")
 data class Car(
+
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val consList: List<String>,
     val customerPrice: Int,
     val make: String,

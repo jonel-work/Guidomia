@@ -1,28 +1,43 @@
 package com.jantiojo.guidomia.data.local
 
 import android.content.Context
+import android.util.Log
 import com.jantiojo.guidomia.R
 import com.jantiojo.guidomia.data.model.Car
 import com.jantiojo.guidomia.utils.json.JsonFileUtils
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 
-class CarLocalDataSource(private val context: Context) {
+class CarLocalDataSource(
+    private val context: Context,
+    private val guidomiaDao: GuidomiaDao
+) {
 
-    fun getCars(): List<Car> {
-        return fetchCarFromAssets()
+    suspend fun getCars(): Flow<List<Car>> {
+        val carsFromAsset = fetchCarFromAssets()
+        return if (!guidomiaDao.isEmpty()) {
+            Log.e("tesst","DB is NOT EMPTY")
+            guidomiaDao.getCars()
+        } else {
+            guidomiaDao.insertAllCar(carsFromAsset)
+            Log.e("tesst","GET CAR FROM carsFromAsset")
+            flowOf(carsFromAsset)
+        }
     }
 
-    fun getCarMakeFilterList(): List<String> {
+    suspend fun getCarMakeFilterList(): Flow<List<String>> {
         val dropdownFilterList = mutableListOf<String>()
         dropdownFilterList.add(context.resources.getString(R.string.any_make_hint))
-        dropdownFilterList.addAll(getCars().map { it.make })
-        return dropdownFilterList
+        dropdownFilterList.addAll(getCars().first().map { it.make })
+        return flowOf(dropdownFilterList)
     }
 
-    fun getCarModelFilterList(): List<String> {
+    suspend fun getCarModelFilterList(): Flow<List<String>> {
         val dropdownFilterList = mutableListOf<String>()
         dropdownFilterList.add(context.resources.getString(R.string.any_model_hint))
-        dropdownFilterList.addAll(getCars().map { it.model })
-        return dropdownFilterList
+        dropdownFilterList.addAll(getCars().first().map { it.model })
+        return flowOf(dropdownFilterList)
     }
 
 

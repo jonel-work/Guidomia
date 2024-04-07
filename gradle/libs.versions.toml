@@ -13,6 +13,7 @@ kotlinSerializationJson = "1.6.0"
 mockkVersion = "1.13.10"
 roomVersion = "2.5.1"
 coroutineVersion = "1.8.0"
+turbineVersion = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +42,7 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVer
 coroutine-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
 coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutineVersion" }
 coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutineVersion" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbineVersion" }
 
 [bundles]
 mockkTest = ["mockk-agent", "mockk-android"]

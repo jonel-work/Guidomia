@@ -51,13 +51,15 @@ fun DropdownFilterSection(
 
             DropDownMenuFilter(
                 dropdownItems = makeDropdownMenu,
-                defaultItem = makeDropdownMenu.first(),
+                defaultItem = makeDropdownMenu.firstOrNull()
+                    ?: stringResource(id = R.string.any_make_hint),
                 onDropdownMenuChange = onMakeDropdownChange
             )
 
             DropDownMenuFilter(
                 dropdownItems = modelDropdownMenu,
-                defaultItem = modelDropdownMenu.first(),
+                defaultItem = modelDropdownMenu.firstOrNull()
+                    ?: stringResource(id = R.string.any_model_hint),
                 onDropdownMenuChange = onModelDropdownChange
             )
         }
