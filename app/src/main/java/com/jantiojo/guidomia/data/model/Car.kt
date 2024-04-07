@@ -11,4 +11,9 @@ data class Car(
     val model: String,
     val prosList: List<String>,
     val rating: Int
-)
+) {
+    fun doesMatchSearchQuery(makeText: String, modelText: String): Boolean {
+        return make.equals(makeText, ignoreCase = true)
+                || model.equals(modelText, ignoreCase = true)
+    }
+}

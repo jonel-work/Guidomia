@@ -41,6 +41,9 @@ fun DropDownMenuFilter(
         mutableStateOf(0.dp)
     }
     var expanded by remember { mutableStateOf(false) }
+
+    var dropDownValue by remember { mutableStateOf(defaultItem) }
+
     Card(
         shape = RoundedCornerShape(6.dp),
         elevation = CardDefaults.elevatedCardElevation(4.dp),
@@ -50,7 +53,7 @@ fun DropDownMenuFilter(
             }
     ) {
         Text(
-            text = defaultItem,
+            text = dropDownValue,
             textAlign = TextAlign.Start,
             style = MaterialTheme.typography.bodyLarge.copy(
                 color = Black45,
@@ -86,6 +89,7 @@ fun DropDownMenuFilter(
                     },
                     onClick = {
                         onDropdownMenuChange(item)
+                        dropDownValue = item
                         expanded = false
                     }
                 )

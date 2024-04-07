@@ -29,8 +29,8 @@ fun HomeScreen(
         carUIList = carUiState,
         makeDropdownMenu = makeMenuUiState,
         modelDropdownMenu = modelMenuUiState,
-        onMakeDropdownMenuChange = {},
-        onModelDropdownMenuChange = {},
+        onMakeDropdownMenuChange = viewModel::onFilterByMake,
+        onModelDropdownMenuChange = viewModel::onFilterByModel,
         modifier = modifier
     )
 
@@ -40,8 +40,8 @@ fun HomeScreen(
 @Composable
 private fun MainScreenBody(
     carUIList: List<CarItemUiModel>,
-    makeDropdownMenu : List<String>,
-    modelDropdownMenu : List<String>,
+    makeDropdownMenu: List<String>,
+    modelDropdownMenu: List<String>,
     onMakeDropdownMenuChange: (String) -> Unit,
     onModelDropdownMenuChange: (String) -> Unit,
     modifier: Modifier = Modifier
